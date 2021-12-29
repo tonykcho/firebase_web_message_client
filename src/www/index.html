@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDH7yEvsKQF9zXGXgPpG5pdYGi0OOHPnHI",
+            authDomain: "netcoredemo-baeb7.firebaseapp.com",
+            projectId: "netcoredemo-baeb7",
+            storageBucket: "netcoredemo-baeb7.appspot.com",
+            messagingSenderId: "818088670354",
+            appId: "1:818088670354:web:247c94e25c9ea7cb88e24b",
+            measurementId: "G-S8LDSZRQNH"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        const messaging = firebase.messaging();
+
+        messaging.getToken({ vapidKey: "BEfDDVYpM91QqslycdxstmUPH5FhebgE77IZKLh_DUd3FGNsg6D6TQ9I7E9teqS1qDdWsyQjQ_vrVpxqwCia_vc" })
+            .then((token) => {
+                console.log(token);
+            });
+
+        messaging.onMessage(function (payload) {
+            console.log("Received direct message");
+            console.log(payload);
+        });
+    </script>
+</head>
+
+<body>
+    <p>Hello World!</p>
+</body>
+
+</html>
